@@ -4,14 +4,27 @@ const globalStore = writable({
   sidebar: false,
   cart: false,
   alert: false,
+  alertText: "dummy text",
+  alertDanger: false,
 });
 
 const store = {
   subscribe: globalStore.subscribe,
-  toggleItem: (item, value) => {
-    globalStore.update((storeValues) => {
-      return { ...storeValues, [item]: value };
-    });
+  toggleItem: (
+    item,
+    value,
+    alertText = "default text",
+    alertDanger = false
+  ) => {
+    if (item === "alert") {
+      globalStore.update((storeValues) => {
+        return { ...storeValues, [item]: value, alertText, alertDanger };
+      });
+    } else {
+      globalStore.update((storeValues) => {
+        return { ...storeValues, [item]: value };
+      });
+    }
   },
 };
 

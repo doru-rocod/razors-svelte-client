@@ -2,7 +2,7 @@
   import user from "../stores/user";
   import { link } from "svelte-routing";
   // logout func
-
+  import { logout } from "../strapi/setupUser";
   import globalStore from "../stores/globalStore";
 </script>
 
@@ -12,6 +12,7 @@
     use:link
     class="logout-btn"
     on:click={() => {
+      logout();
       globalStore.toggleItem("sidebar", false);
     }}>logout</a
   >
