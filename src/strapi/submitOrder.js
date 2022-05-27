@@ -3,9 +3,11 @@ import url from "./URL";
 
 // we submit the order to strapi
 async function submitOrder({ name, total, items, stripeTokenId, userToken }) {
+  // let data = { name, total, items, stripeTokenId };
+  console.log("obiectul data este", { name, total, items, stripeTokenId });
   const response = await axios
     .post(
-      `${url}/orders`,
+      `${url}/api/orders`,
       { name, total, items, stripeTokenId },
       {
         headers: {

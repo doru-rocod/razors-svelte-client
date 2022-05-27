@@ -43,12 +43,16 @@
 
   // we submit the order (togehter with stripeTokenId) to strapi
   async function handleSubmit() {
+    globalStore.toggleItem("alert", true, "submitting data... please wait!");
     let response = await stripe
       .createToken(card)
-      .catch((error) => console.log(error));
+      .catch((error) => console.log("stripe n-a generat tokenul", error));
+    console.log("raspunsul este:", response);
     const { token } = response;
+    console.log("tokenul inainte de if token", token);
     if (token) {
       const { id } = token;
+      console.log("id-ul este:", id);
       const order = await submitOrder({
         name,
         total: $cartTotal,
@@ -56,7 +60,7 @@
         stripeTokenId: id,
         userToken: $user.jwt,
       });
-      console.log(order);
+      console.log("asta e in order din front-end", order);
       if (order) {
         globalStore.toggleItem("alert", true, "Your order is complete!");
         cart.set([]);

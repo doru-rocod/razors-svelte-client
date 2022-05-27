@@ -4,7 +4,7 @@ import setupUser from "./setupUser";
 
 async function loginUser({ email, password }) {
   const response = await axios
-    .post(`${url}/auth/local`, {
+    .post(`${url}/api/auth/local`, {
       identifier: email,
       password,
     })

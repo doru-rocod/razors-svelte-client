@@ -28,7 +28,8 @@
       class="cart-btn amount-btn"
       on:click={() => {
         increaseAmount(id);
-      }}>
+      }}
+    >
       <i class="fas fa-chevron-up" />
     </button>
     <p class="item-amount">{amount}</p>
@@ -36,7 +37,8 @@
       class="cart-btn amount-btn"
       on:click={() => {
         decreaseAmount(id);
-      }}>
+      }}
+    >
       <i class="fas fa-chevron-down" />
     </button>
   </div>

@@ -56,7 +56,8 @@ export const decreaseAmount = (id) => {
 
 export const addToCart = (product) => {
   cart.update((storeValue) => {
-    const { id, title, price, image } = product;
+    const { id, image } = product;
+    const { title, price } = product.attributes;
     let item = storeValue.find((item) => item.id === id);
     let cart;
     if (item) {
